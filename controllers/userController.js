@@ -6,10 +6,13 @@ module.exports = {
         try{
             if (!req.headers.authorization) { throw new CreateError('token') }
 
-            const result = await userService.signUp(req)
+            const [result, serviceToken] = await userService.signUp(req)
+            
+            const status = result == 'Created' ? 201 : 200
 
-            return res.status(result == 'Create' ? 201 : 200).json( {'message' : result} )
+            return res.header('Authorization', serviceToken).status(status).json({message : result})
+
         }catch(err){
-            res.status(err.statusCode || 500).json( {'message' : err.message} ) }
+            res.status(err.statusCode || 500).json({'message' : err.message} ) }
     }
 }
