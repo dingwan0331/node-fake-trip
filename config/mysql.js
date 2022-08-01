@@ -11,8 +11,9 @@ const myDataSource = new DataSource({
     password : process.env.TYPEORM_PASSWORD,
     database : process.env.TYPEORM_DATABASE
 })
+myDataSource.initialize().then(() => {
+    console.log("Data Source has been initialized!")
+    }
+)
 
-module.exports = myDataSource.initialize()
-    .then(() => {
-        console.log("Data Source has been initialized!")
-    })
+module.exports = {myDataSource}
