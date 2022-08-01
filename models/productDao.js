@@ -11,10 +11,11 @@ const getProduct = async (productId) =>{
         products.latitude, 
         products.longtitude,
         MIN(rooms.price) AS price,
-        AVG(products.rating) AS rating, 
+        AVG(reviews.rating) AS rating, 
         SUM(reviews.id) AS review_count FROM products 
         LEFT OUTER JOIN reviews ON products.id = reviews.product_id
-        where product_id = ${productId}`
+        LEFT OUTER JOIN rooms ON products.id = rooms.product_id
+        WHERE products.id = ${productId};`
     )
 }
 

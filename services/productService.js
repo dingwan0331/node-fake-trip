@@ -2,7 +2,7 @@ const { getProduct } = require('../models/productDao')
 const { CreateError } = require('../util/exceptions')
 
 const productDetail = async (productId) =>{
-    console.log(await getProduct(productId))
+    const row = await getProduct(productId)
 }
 
 module.exports = { productDetail }
