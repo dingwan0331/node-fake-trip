@@ -8,7 +8,7 @@ module.exports = {
 
             const result = await userService.signUp(req)
 
-            return res.status(result == 'Success' ? 200 : 201).json( {'message' : result} )
+            return res.status(result == 'Create' ? 201 : 200).json( {'message' : result} )
         }catch(err){
             res.status(err.statusCode || 500).json( {'message' : err.message} ) }
     }
