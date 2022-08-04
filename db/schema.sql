@@ -118,7 +118,7 @@ CREATE TABLE `reviews` (
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
   `deleted_at` datetime DEFAULT NULL,
-  `is_public` tinyint(1) DEFAULT NULL,
+  `is_public` tinyint(1) DEFAULT '1',
   `is_deleted` tinyint(1) DEFAULT '0',
   PRIMARY KEY (`id`),
   KEY `user_id` (`user_id`),
@@ -199,7 +199,7 @@ CREATE TABLE `users` (
   UNIQUE KEY `kakao_pk` (`kakao_pk`),
   UNIQUE KEY `email` (`email`),
   UNIQUE KEY `phone_number` (`phone_number`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=112 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -231,5 +231,6 @@ INSERT INTO `schema_migrations` (version) VALUES
   ('20220729044814'),
   ('20220729054708'),
   ('20220729122854'),
-  ('20220729123008');
+  ('20220729123008'),
+  ('20220804021920');
 UNLOCK TABLES;
