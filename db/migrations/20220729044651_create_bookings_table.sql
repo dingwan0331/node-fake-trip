@@ -6,8 +6,8 @@ CREATE TABLE bookings(
     guest_information json,
     start_date date,
     end_date date,
-    created_at datetime,
-    updated_at datetime,
+    created_at timestamp DEFAULT current_timestamp, 
+    updated_at timestamp DEFAULT current_timestamp ON UPDATE current_timestamp,
     deleted_at datetime,
     is_deleted tinyint(1) DEFAULT 0,
 
