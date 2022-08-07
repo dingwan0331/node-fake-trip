@@ -15,13 +15,9 @@ const signUp = async (req)=>{
     const name    = kakaoData.properties.nickname
     const email   = kakaoData.kakao_account.email
     
-    const row = await getOrCreateUser(kakaoPk,name,email)
-
-    const userId = row[0].id || row.insertId
+    const userId = await getOrCreateUser(kakaoPk,name,email)
 
     let result = 'Success' 
-
-    if (row.insertId && row.affectedRows==1){ result = 'Created'}
     
     const payload      = {'userId' : userId}
     const secretKey    = process.env.SECRET_KEY
