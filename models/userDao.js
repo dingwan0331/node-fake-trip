@@ -13,9 +13,10 @@ const getOrCreateUser = async (kakaoPk, name, email) => {
 
         if(!(name === row[0].name) || !(email === row[0].email) ){
             row = await myDataSource.query('UPDATE users SET name=?,email=?', [name, email] )
-            return row.id
         }
 
+        return row[0].id
+        
     }catch(err){
         throw new CreateError('database')
     }

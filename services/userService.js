@@ -16,14 +16,12 @@ const signUp = async (req)=>{
     const email   = kakaoData.kakao_account.email
     
     const userId = await getOrCreateUser(kakaoPk,name,email)
-
-    let result = 'Success' 
     
     const payload      = {'userId' : userId}
     const secretKey    = process.env.SECRET_KEY
     const serviceToken = jwt.sign(payload, secretKey)
-
-    return [result, serviceToken]
+    
+    return serviceToken
 }
 
 module.exports = {signUp}

@@ -6,7 +6,7 @@ module.exports = {
         try{
             if (!req.headers.authorization) { throw new CreateError('token') }
 
-            const [result, serviceToken] = await userService.signUp(req)
+            const serviceToken = await userService.signUp(req)
 
             return res.header('Authorization', serviceToken).status(200).json({message : 'Success'})
 
