@@ -9,7 +9,7 @@ WORKDIR /usr/src/app
 # 현재 패키지 설치 정보를 도커 이미지에 복사
 COPY package*.json ./
 # 설치정보를 읽어 들여서 패키지를 설치
-RUN RUN npm ci --only=production
+RUN npm ci --only=production
 
 ## Copy all src files
 # 현재경로에 존재하는 모든 소스파일을 이미지에 복사
